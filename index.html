@@ -701,7 +701,7 @@ async function accDec(pw,o){const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0
  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(o.i)},k,b(o.c)));}
 function accNorm(p){return (p||"").trim().toLowerCase().replace(/\s+/g," ");}
 
-const PWCHK={"s": "yL3h+KirU7AKOHOGnwSf1Q==", "i": "RQmjsucsQ2X6Wnqq", "c": "Ad7wTzAv1k9dQM8gLYA1plm6", "n": 150000};
+const PWCHK={"s": "10sa2a/X6T8H15bX9R7nwQ==", "i": "B2ItcTuglQQfYW93", "c": "iRl34DL69V+mfGvxUW0myLTG", "n": 150000};
 let accOpen=false;try{accOpen=!!sessionStorage.getItem("acc_pw");}catch(e){}
 function accGate(cb){if(accOpen)return cb();const d=document.createElement("div");d.className="pwbg";
   d.innerHTML=`<form class="pwbox" autocomplete="off"><h3 style="margin:0 0 6px">Afgeschermd</h3><p class="meta" style="margin:0 0 10px">De voorwaarden per geldverstrekker zijn afgeschermd. Vul het wachtwoord in.</p><input type="password" class="q" placeholder="Wachtwoord" aria-label="Wachtwoord"><div class="pwe" style="color:#b00020;font-size:14px;min-height:1.2em;margin:6px 0"></div><button class="btn primary" type="submit">Openen</button> <button class="btn s" type="button" data-x>Annuleren</button></form>`;
@@ -986,7 +986,7 @@ function askParse(q){const n=norm(q);
      crit=sc.slice(0,4).map(x=>x.k);}}
   if(lenders.length&&lenders.every(s=>L[s].reference)&&crit.length) lenders=[];
   return {lenders,crit,rest};}
-const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen".split(" "));
+const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen financieren financiert financier financiering gefinancierd financierbaar financieel lenen leent geleend kopen koopt koop aankoop aankopen aanvragen aanvraag verstrekken verstrekt verstrekking kunnen afsluiten sluiten mogelijkheden opties".split(" "));
 function qterms(rest){const r=rest||[],out=[];for(let i=0;i<r.length;i++){const w=r[i];if(/^\d/.test(w)&&r[i+1]&&!/^\d/.test(r[i+1])){out.push(w+" "+stem(r[i+1]));i++;}else if(w.length>=3&&!/^\d+$/.test(w))out.push(stem(w));}return out;}
 const stem=w=>w.length>5?w.replace(/(en|es|s|e)$/,""):w;
 function lev(a,b,lim){const m=a.length,n2=b.length;let prev=Array.from({length:n2+1},(_,j)=>j);
@@ -1261,7 +1261,7 @@ function wbRender(){
 function wbInit(){["#wbAfl","#wbStaal","#wbLabel","#wbRabo"].forEach(i=>$(i).onchange=wbRender);wbRender();}
 
 /* ---------- nieuwe versie: open pagina ververst zichzelf ---------- */
-const BUILDVER="f44d5325231b";
+const BUILDVER="6e1b2dec9781";
 function verCheck(){if(BUILDVER.indexOf("__")===0)return;fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():"").then(v=>{v=(v||"").trim();if(v&&v!==BUILDVER&&/^[0-9a-f]{12}$/.test(v)){try{if(sessionStorage.getItem("acc_rl")===v)return;sessionStorage.setItem("acc_rl",v);}catch(e){return;}const q=$("#askQ")?$("#askQ").value:"";try{sessionStorage.setItem("acc_q",q);}catch(e){}location.replace(location.pathname+"?v="+v+location.hash);}}).catch(()=>{});}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")verCheck();});
 window.addEventListener("pageshow",e=>{if(e.persisted)verCheck();});
