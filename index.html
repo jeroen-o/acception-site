@@ -370,6 +370,7 @@ table.docs{width:100%;border-collapse:collapse;font-size:13.5px}
     <div class="grid feat">
       <a class="card" href="https://www.nhg.nl/kennis-innovatie/voorwaarden-en-normen-2026/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic">N</div><h3>NHG Voorwaarden &amp; Normen 2026</h3><p>De normen van Nationale Hypotheek Garantie. In Acception opgenomen als referentiekolom in de vergelijking. ↗</p></a>
       <a class="card" href="/nhg-2027/" style="text-decoration:none;color:inherit"><div class="ic">N</div><h3>NHG Voorwaarden &amp; Normen 2027</h3><p>Geldig vanaf 1 januari 2027: NHG-grens € 500.000, funderingsrisico, standaard Energiebespaarbudget bij label E/F/G – alle wijzigingen met bron.</p></a>
+      <a class="card" href="https://woningverzilveraar.nl/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic">V</div><h3>Woningverzilveraar (NVHP)</h3><p>Vergelijkingstool verzilverhypotheken van de NVHP: leeftijd, maximale opname, restschuldgarantie en overlijden per aanbieder, inclusief SVn. ↗</p></a>
       <a class="card" href="https://www.nibud.nl/onderwerpen/wonen/hypotheek-afsluiten/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic">€</div><h3>Nibud – hypotheek afsluiten</h3><p>Achtergrond over verantwoord lenen en de leennormen (woonquotes) die de basis vormen voor de maximale hypotheek. ↗</p></a>
       <a class="card" href="/leidraad/" style="text-decoration:none;color:inherit"><div class="ic">L</div><h3>AFM Leidraad Hypotheekadvisering 2026</h3><p>Waarom de herziene leidraad belangrijk is – per onderwerp met citaat en waar je de voorwaarden in Acception vindt.</p></a>
       <a class="card" href="https://www.afm.nl/nl-nl/sector/actueel/2022/juli/sectorbrief-acceptatiebeleid" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><div class="ic">!</div><h3>AFM-sectorbrief acceptatiebeleid</h3><p>De AFM-bevindingen (2022) over acceptatiebeleid; de thema's staan als voorwaardengroep in de vergelijking. ↗</p></a>
@@ -701,7 +702,7 @@ async function accDec(pw,o){const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0
  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(o.i)},k,b(o.c)));}
 function accNorm(p){return (p||"").trim().toLowerCase().replace(/\s+/g," ");}
 
-const PWCHK={"s": "/HY08Kyuk/sIcxB58h6/5g==", "i": "Pz3lQI8HUsgXWECu", "c": "IqhHjSfy8xlCiMUopv1vS9Wr", "n": 150000};
+const PWCHK={"s": "YjFiab8OSyDn8wkUnNmZIg==", "i": "HqMxMV5nHXsisVJp", "c": "hP6wliqijcNDYjGfN7mpBueY", "n": 150000};
 let accOpen=false;try{accOpen=!!sessionStorage.getItem("acc_pw");}catch(e){}
 function accGate(cb){if(accOpen)return cb();const d=document.createElement("div");d.className="pwbg";
   d.innerHTML=`<form class="pwbox" autocomplete="off"><h3 style="margin:0 0 6px">Afgeschermd</h3><p class="meta" style="margin:0 0 10px">De voorwaarden per geldverstrekker zijn afgeschermd. Vul het wachtwoord in.</p><input type="password" class="q" placeholder="Wachtwoord" aria-label="Wachtwoord"><div class="pwe" style="color:#b00020;font-size:14px;min-height:1.2em;margin:6px 0"></div><button class="btn primary" type="submit">Openen</button> <button class="btn s" type="button" data-x>Annuleren</button></form>`;
@@ -740,7 +741,7 @@ function showProfile(slug){
 function renderDocs(){
   let h=`<thead><tr><th>Geldverstrekker</th><th>Document</th><th>Type</th><th>Versie</th><th>Links</th></tr></thead><tbody>`;
   h+=`<tr><td colspan="5" style="background:var(--orange-soft);font-weight:700">Achtergrond &amp; normen</td></tr>`;
-  [["NHG","Voorwaarden & Normen 2026-1","normen","https://www.nhg.nl/kennis-innovatie/voorwaarden-en-normen-2026/"],["Nibud","Hypotheek afsluiten (leennormen, verantwoord lenen)","achtergrond","https://www.nibud.nl/onderwerpen/wonen/hypotheek-afsluiten/"],["AFM","Leidraad Hypotheekadvisering (april 2026)","toezicht",""],["AFM","Sectorbrief hypotheekacceptatiebeleid (25 juli 2022)","toezicht","https://www.afm.nl/nl-nl/sector/actueel/2022/juli/sectorbrief-acceptatiebeleid"],["Rijksoverheid","Hypotheek aanvragen: wat moet ik regelen?","achtergrond","https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/huis-kopen/hypotheek-aanvragen-wat-moet-ik-regelen"],["Hypotheekbond","Hypotheekrente-overzicht","rentes","https://consumenten.hypotheekbond.nl/rekentools/hypotheekrente-overzicht/"],["Looptijdrente.nl","Looptijdrente berekenen en vergelijken","rentes","https://www.looptijdrente.nl/"],["HDN","Marktcijfers","marktcijfers","https://hdn.nl/marktcijfers/"]].forEach(([a,b,c,u])=>{h+=`<tr><td>${a}</td><td>${esc(b)}</td><td>${c}</td><td></td><td><a href="${u}" target="_blank" rel="noopener">online ↗</a></td></tr>`;});
+  [["NHG","Voorwaarden & Normen 2026-1","normen","https://www.nhg.nl/kennis-innovatie/voorwaarden-en-normen-2026/"],["Nibud","Hypotheek afsluiten (leennormen, verantwoord lenen)","achtergrond","https://www.nibud.nl/onderwerpen/wonen/hypotheek-afsluiten/"],["NVHP","Woningverzilveraar – verzilverhypotheken vergelijken","achtergrond","https://woningverzilveraar.nl/"],["AFM","Leidraad Hypotheekadvisering (april 2026)","toezicht",""],["AFM","Sectorbrief hypotheekacceptatiebeleid (25 juli 2022)","toezicht","https://www.afm.nl/nl-nl/sector/actueel/2022/juli/sectorbrief-acceptatiebeleid"],["Rijksoverheid","Hypotheek aanvragen: wat moet ik regelen?","achtergrond","https://www.rijksoverheid.nl/documenten/vraag-en-antwoord/huis-kopen/hypotheek-aanvragen-wat-moet-ik-regelen"],["Hypotheekbond","Hypotheekrente-overzicht","rentes","https://consumenten.hypotheekbond.nl/rekentools/hypotheekrente-overzicht/"],["Looptijdrente.nl","Looptijdrente berekenen en vergelijken","rentes","https://www.looptijdrente.nl/"],["HDN","Marktcijfers","marktcijfers","https://hdn.nl/marktcijfers/"]].forEach(([a,b,c,u])=>{h+=`<tr><td>${a}</td><td>${esc(b)}</td><td>${c}</td><td></td><td><a href="${u}" target="_blank" rel="noopener">online ↗</a></td></tr>`;});
   h+=`<tr><td colspan="5" style="background:var(--orange-soft);font-weight:700">Adviseursportalen</td></tr>`;
   LENDERS.forEach(l=>{h+=`<tr><td>${esc(l.lender)}</td><td>${esc(l.portal?.label||"")}${l.portal?.note?`<div class="meta">${esc(l.portal.note)}</div>`:""}</td><td>adviseursportaal</td><td></td><td>${portalHTML(l)}</td></tr>`;});
   h+=`<tr><td colspan="5" style="background:var(--orange-soft);font-weight:700">Documenten</td></tr>`;
@@ -859,7 +860,7 @@ const SYN={
  dertig:["30% regeling","30%-regeling","30 procent regeling","dertig procent","extraterritoriale kosten","extraterritoriale vergoeding","30% ruling"],
  tijdverhuur:["tijdelijke verhuur","tijdelijk verhuren","airbnb","leegstandwet","leegstandsvergunning","kamerverhuur","onderverhuur","vakantieverhuur","verhuren eigen woning"],
  scheiding:["echtscheiding","scheiding","gescheiden","scheiden","uitkoop","uitkopen","ex partner","partner uitkopen","ontslag hoofdelijke aansprakelijkheid","ontslag hoofdelijkheid"],
- kangoeroe:["kangoeroe","kangoeroewoning","kangoeroewoningen","mantelzorgwoning","mantelzorgwoningen","mantelzorg","aanleunwoning","zorgwoning","buidelwoning","inwonende ouders"],
+ kangoeroe:["kangaroe","kangeroe","kangaroewoning","kangeroewoning","kangoeroe","kangoeroewoning","kangoeroewoningen","mantelzorgwoning","mantelzorgwoningen","mantelzorg","aanleunwoning","zorgwoning","buidelwoning","inwonende ouders"],
  beoordeling:["beoordeling via","beoordeeld door","wie beoordeelt","acceptatie via","acceptatie door","servicer","serviceprovider","service provider","volmacht","midoffice","mid office","stater","quion","vcn","vcn partner","dvm","mo servicing","mo.servicing","hypotheekverwerker","beheer via","uitbesteed"],
  gastouder:["gastouder","gastouders","gastouderschap","gastouderopvang","kinderopvang aan huis"],
  woonboot:["woonboot","woonboten","woonark","woonarken","woonschip","woonschepen","drijvende woning","watervilla","ligplaats","waterwoning"],
@@ -985,11 +986,14 @@ function askParse(q){const n=norm(q);
         return {k:c.key,m:hitw.length,nl,lab:st.filter(w=>norm(c.label).includes(w)).length};})
       .filter(x=>x.m===st.length&&(x.nl>0||x.lab>0)).sort((a,b)=>b.lab-a.lab||b.nl-a.nl);
      crit=sc.slice(0,4).map(x=>x.k);}}
+  // "meenemen" als werkwoord (inkomen meenemen) is geen verhuis-/meeneemregeling als er al een ander onderwerp is
+  if(crit.length>1&&crit.includes("meeneemregeling")&&!/verhuis|meeneem|(hypotheek|rente|lening) (mee)?nemen/.test(n))crit=crit.filter(k=>k!=="meeneemregeling");
   // partijnamen bij "beoordeling via": filter op de genoemde partij (VCN, Stater, Quion …)
   if(crit.includes("beoordeling"))["stater","quion","vcn","dvm","servicing","serviceprovider","midoffice","volmacht"].forEach(w=>{if(n.includes(w)&&!rest.includes(w))rest.push(w);});
   if(lenders.length&&lenders.every(s=>L[s].reference)&&crit.length) lenders=[];
   return {lenders,crit,rest};}
-const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen financieren financiert financier financiering gefinancierd financierbaar financieel lenen leent geleend kopen koopt koop aankoop aankopen aanvragen aanvraag verstrekken verstrekt verstrekking kunnen afsluiten sluiten mogelijkheden opties werkt werken samen samenwerken samenwerking via door".split(" "));
+const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen financieren financiert financier financiering gefinancierd financierbaar financieel lenen leent geleend kopen koopt koop aankoop aankopen aanvragen aanvraag verstrekken verstrekt verstrekking kunnen afsluiten sluiten mogelijkheden opties werkt werken samen samenwerken samenwerking via door gaan omgaan omgang om situatie geval vraag vragen info informatie graag eigen iets alles over zoek zoeken zoekt vinden vind weten welk hoeveel maximaal minimaal maximale minimale soms vaak altijd mee klantje aanvrager aanvragers persoon personen mensen iemand".split(" "));
+const HARDW=new Set(["stater","quion","vcn","dvm","servicing","serviceprovider","midoffice","volmacht"]);
 function qterms(rest){const r=rest||[],out=[];for(let i=0;i<r.length;i++){const w=r[i];if(/^\d/.test(w)&&r[i+1]&&!/^\d/.test(r[i+1])){out.push(w+" "+stem(r[i+1]));i++;}else if(w.length>=3&&!/^\d+$/.test(w))out.push(stem(w));}return out;}
 const stem=w=>w.length>5?w.replace(/(en|es|s|e)$/,""):w;
 function lev(a,b,lim){const m=a.length,n2=b.length;let prev=Array.from({length:n2+1},(_,j)=>j);
@@ -1006,7 +1010,7 @@ const ROUTES=[
  {w:["leidraad","afm leidraad","leidraad hypotheekadvisering"],href:"/leidraad/",txt:"AFM Leidraad Hypotheekadvisering"},
  {w:["starter","starters","koopstart","eerste woning","eerste huis"],href:"/starters/",txt:"Starters: voorwaarden per geldverstrekker"},
  {w:["doorstromer","doorstromers","volgende woning"],href:"/doorstromers/",txt:"Doorstromers: voorwaarden per geldverstrekker"},
- {w:["verzilveren","verzilverhypotheek","zilverhuis","opeethypotheek","overwaarde opeten"],href:"/verzilveren/",txt:"Verzilveren (overwaarde opeten)"},
+ {w:["verzilveren","verzilverhypotheek","zilverhuis","opeethypotheek","overwaarde opeten","woningverzilveraar","verzilverlening","svn","levensrente","overwaarde hypotheek"],href:"/verzilveren/",txt:"Verzilveren (overwaarde opeten) · ook: Woningverzilveraar.nl (NVHP)"},
  {w:["ondernemer","ondernemers","zzp","zzper","zzp er","dga","zelfstandige"],href:"/ondernemers/",txt:"Ondernemers / zzp: voorwaarden per geldverstrekker"},
  {w:["senior","senioren","gepensioneerd","gepensioneerde"],href:"/senioren/",txt:"Senioren: voorwaarden per geldverstrekker"},
  {w:["box 3","box3","belegger","beleggers","beleggingspand","verhuurhypotheek","buy to let"],href:"/box3-beleggers/",txt:"Box 3-beleggers / verhuur"},
@@ -1032,7 +1036,7 @@ function askInner(ev,opts){opts=opts||{};
   const {lenders,crit,rest}=askParse(q); const rh=routeHTML(norm(q));
   let h="";
   if(!crit.length&&!rh){
-    h=`<div class="card hit"><b>Geen onderwerp herkend.</b> <span class="meta">Probeer een woord als studieschuld, erfpacht, ZZP, BKR, overbrugging, woonboot of expats.${lenders.length?" Herkende geldverstrekker(s): "+lenders.map(s=>esc(L[s].lender)).join(", ")+".":""}</span>${lenders.length===1?` <a href="#" data-open="${lenders[0]}">Bekijk alle voorwaarden van ${esc(L[lenders[0]].lender)}</a>`:""}${typeof CORPUS_B64!=="undefined"&&CORPUS_B64?` · <a href="#" data-ftsearch="1">Zoek in de volledige brontekst</a>`:""}</div>`;
+    h=`<div class="card hit noresult"><b>Helaas geen resultaat, zoek op een ander kenmerk.</b> <span class="meta">Mis je iets? Geef het aan ons door, dan voegen we het toe.</span> <span class="meta">Probeer bijvoorbeeld studieschuld, erfpacht, ZZP, BKR, overbrugging, woonboot of expats.</span><span class="meta" style="display:none"> studieschuld, erfpacht, ZZP, BKR, overbrugging, woonboot of expats.${lenders.length?" Herkende geldverstrekker(s): "+lenders.map(s=>esc(L[s].lender)).join(", ")+".":""}</span>${lenders.length===1?` <a href="#" data-open="${lenders[0]}">Bekijk alle voorwaarden van ${esc(L[lenders[0]].lender)}</a>`:""}${typeof CORPUS_B64!=="undefined"&&CORPUS_B64?` · <a href="#" data-ftsearch="1">Zoek in de volledige brontekst</a>`:""}</div>`;
   } else {
     let shown=0; crit.slice(0,4).forEach(k=>{const c=CRIT.find(x=>x.key===k);
       let ls=(lenders.length?lenders:LENDERS.map(l=>l.slug)).map(s=>L[s]).filter(l=>l.criteria&&l.criteria[k]);
@@ -1042,14 +1046,14 @@ function askInner(ev,opts){opts=opts||{};
        const stw=qterms(rest);
        const mt=l=>{const t=norm(l.criteria[k].short+" "+l.criteria[k].value);return stw.filter(w=>t.includes(w)).length;};
        ls.sort((a,b)=>rk(a)-rk(b)||mt(b)-mt(a));
-       ls=ls.filter(l=>rk(l)!==2);
-       if(stw.length&&!lenders.length){const best=Math.max(0,...ls.map(mt));if(best>0)ls=ls.filter(l=>mt(l)===best||l.reference);}}
+       if(!lenders.length)ls=ls.filter(l=>rk(l)!==2); // bij een genoemde geldverstrekker ook "nee" tonen
+       const hard=stw.filter(w=>/\d/.test(w)||HARDW.has(w));if(hard.length&&!lenders.length){const mh=l=>{const t=norm(l.criteria[k].short+" "+l.criteria[k].value);return hard.filter(w=>t.includes(w)).length;};const best=Math.max(0,...ls.map(mh));if(best>0)ls=ls.filter(l=>mh(l)===best||l.reference);}}
       if(!ls.filter(l=>!l.reference).length) return;
       shown++;
       h+=`<div class="card hit ans"><h3>${esc(c.label)} <span class="meta">· ${esc(c.group)}${lenders.length?"":" · "+ls.filter(l=>!l.reference).length+" geldverstrekker(s)"}</span></h3>`+
         ls.map(l=>{const v=l.criteria[k];return `<div class="row"><div>${l.logo?`<img class="lglogo" src="${l.logo}" alt="">`:""}<b>${esc(l.lender)}</b><div class="meta">${hl(v.short||"",rest)}</div></div><div>${hl(v.value,rest)}<div class="sources">${srcHTML(l,v.sources[0])}</div>${v.sources.length>1?`<a href="#" data-cell="${l.slug}|${k}" class="meta">+ ${v.sources.length-1} bron(nen)</a>`:""}</div></div>`;}).join("")+
         `</div>`;});
-    if(!shown&&!rh) h=`<div class="card hit"><b>Geen positieve resultaten gevonden.</b> <span class="meta">Geen enkele geldverstrekker in de bronnen biedt dit${lenders.length?" (bij "+lenders.map(s=>esc(L[s].lender)).join(", ")+")":""}.</span></div>`;
+    if(!shown&&!rh) h=`<div class="card hit noresult"><b>Helaas geen resultaat, zoek op een ander kenmerk.</b> <span class="meta">Mis je iets? Geef het aan ons door, dan voegen we het toe.</span> <span class="meta">Geen enkele geldverstrekker in de bronnen biedt dit${lenders.length?" (bij "+lenders.map(s=>esc(L[s].lender)).join(", ")+")":""}.</span></div>`;
     if(crit.length>4) h+=`<div class="meta">Meer onderwerpen herkend; verfijn je vraag voor de rest.</div>`;
   }
   if(rh) h=rh+h;
@@ -1264,7 +1268,7 @@ function wbRender(){
 function wbInit(){["#wbAfl","#wbStaal","#wbLabel","#wbRabo"].forEach(i=>$(i).onchange=wbRender);wbRender();}
 
 /* ---------- nieuwe versie: open pagina ververst zichzelf ---------- */
-const BUILDVER="687c069609a9";
+const BUILDVER="3bbbaa18a98c";
 function verCheck(){if(BUILDVER.indexOf("__")===0)return;fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():"").then(v=>{v=(v||"").trim();if(v&&v!==BUILDVER&&/^[0-9a-f]{12}$/.test(v)){try{if(sessionStorage.getItem("acc_rl")===v)return;sessionStorage.setItem("acc_rl",v);}catch(e){return;}const q=$("#askQ")?$("#askQ").value:"";try{sessionStorage.setItem("acc_q",q);}catch(e){}location.replace(location.pathname+"?v="+v+location.hash);}}).catch(()=>{});}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")verCheck();});
 window.addEventListener("pageshow",e=>{if(e.persisted)verCheck();});
