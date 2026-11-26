@@ -528,8 +528,8 @@ table.docs{width:100%;border-collapse:collapse;font-size:13.5px}
 <div id="tip" role="tooltip"></div>
 <dialog id="dlg"><div class="dhead"><div><h3 id="dTitle"></h3><div class="meta" id="dSub"></div></div><button class="x" id="dClose" aria-label="Sluiten">×</button></div><div class="dbody" id="dBody"></div></dialog>
 
-<script src="/data.js?v=0dd7b22120"></script>
-<script>window.QV="0dd7b22120";</script>
+<script src="/data.js?v=45cecb4901"></script>
+<script>window.QV="45cecb4901";</script>
 <script>
 const DATA = window.ACCEPTION_DATA;
 const CORPUS_B64 = "";
@@ -701,7 +701,7 @@ async function accDec(pw,o){const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0
  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(o.i)},k,b(o.c)));}
 function accNorm(p){return (p||"").trim().toLowerCase().replace(/\s+/g," ");}
 
-const PWCHK={"s": "10sa2a/X6T8H15bX9R7nwQ==", "i": "B2ItcTuglQQfYW93", "c": "iRl34DL69V+mfGvxUW0myLTG", "n": 150000};
+const PWCHK={"s": "/HY08Kyuk/sIcxB58h6/5g==", "i": "Pz3lQI8HUsgXWECu", "c": "IqhHjSfy8xlCiMUopv1vS9Wr", "n": 150000};
 let accOpen=false;try{accOpen=!!sessionStorage.getItem("acc_pw");}catch(e){}
 function accGate(cb){if(accOpen)return cb();const d=document.createElement("div");d.className="pwbg";
   d.innerHTML=`<form class="pwbox" autocomplete="off"><h3 style="margin:0 0 6px">Afgeschermd</h3><p class="meta" style="margin:0 0 10px">De voorwaarden per geldverstrekker zijn afgeschermd. Vul het wachtwoord in.</p><input type="password" class="q" placeholder="Wachtwoord" aria-label="Wachtwoord"><div class="pwe" style="color:#b00020;font-size:14px;min-height:1.2em;margin:6px 0"></div><button class="btn primary" type="submit">Openen</button> <button class="btn s" type="button" data-x>Annuleren</button></form>`;
@@ -860,6 +860,7 @@ const SYN={
  tijdverhuur:["tijdelijke verhuur","tijdelijk verhuren","airbnb","leegstandwet","leegstandsvergunning","kamerverhuur","onderverhuur","vakantieverhuur","verhuren eigen woning"],
  scheiding:["echtscheiding","scheiding","gescheiden","scheiden","uitkoop","uitkopen","ex partner","partner uitkopen","ontslag hoofdelijke aansprakelijkheid","ontslag hoofdelijkheid"],
  kangoeroe:["kangoeroe","kangoeroewoning","kangoeroewoningen","mantelzorgwoning","mantelzorgwoningen","mantelzorg","aanleunwoning","zorgwoning","buidelwoning","inwonende ouders"],
+ beoordeling:["beoordeling via","beoordeeld door","wie beoordeelt","acceptatie via","acceptatie door","servicer","serviceprovider","service provider","volmacht","midoffice","mid office","stater","quion","vcn","vcn partner","dvm","mo servicing","mo.servicing","hypotheekverwerker","beheer via","uitbesteed"],
  gastouder:["gastouder","gastouders","gastouderschap","gastouderopvang","kinderopvang aan huis"],
  woonboot:["woonboot","woonboten","woonark","woonarken","woonschip","woonschepen","drijvende woning","watervilla","ligplaats","waterwoning"],
  max_ltv:["ltv","marktwaarde","maximale financiering","maximaal financieren","hoeveel lenen","100%","106%","loan to value"],
@@ -984,9 +985,11 @@ function askParse(q){const n=norm(q);
         return {k:c.key,m:hitw.length,nl,lab:st.filter(w=>norm(c.label).includes(w)).length};})
       .filter(x=>x.m===st.length&&(x.nl>0||x.lab>0)).sort((a,b)=>b.lab-a.lab||b.nl-a.nl);
      crit=sc.slice(0,4).map(x=>x.k);}}
+  // partijnamen bij "beoordeling via": filter op de genoemde partij (VCN, Stater, Quion …)
+  if(crit.includes("beoordeling"))["stater","quion","vcn","dvm","servicing","serviceprovider","midoffice","volmacht"].forEach(w=>{if(n.includes(w)&&!rest.includes(w))rest.push(w);});
   if(lenders.length&&lenders.every(s=>L[s].reference)&&crit.length) lenders=[];
   return {lenders,crit,rest};}
-const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen financieren financiert financier financiering gefinancierd financierbaar financieel lenen leent geleend kopen koopt koop aankoop aankopen aanvragen aanvraag verstrekken verstrekt verstrekking kunnen afsluiten sluiten mogelijkheden opties".split(" "));
+const STOP=new Set("betekent betekenis betekend uitleg uitgelegd wie wat welke welk hoe hoeveel waar wanneer waarom doet doen kan kun kunnen mag mogen moet moeten wil ik je jij u we wij mijn klant klanten iemand de het een met bij van voor en of is zijn er dat die dit op in naar om te tot als ook nog wel niet geen nee ja accepteert accepteren geaccepteerd mogelijk geldverstrekker geldverstrekkers verstrekker bank banken hypotheek hypotheken toegestaan regels regel beleid voorwaarde voorwaarden partij partijen aanbieder aanbieders gaat over zit staat heeft hebben worden wordt meegenomen meetellen telt tellen financieren financiert financier financiering gefinancierd financierbaar financieel lenen leent geleend kopen koopt koop aankoop aankopen aanvragen aanvraag verstrekken verstrekt verstrekking kunnen afsluiten sluiten mogelijkheden opties werkt werken samen samenwerken samenwerking via door".split(" "));
 function qterms(rest){const r=rest||[],out=[];for(let i=0;i<r.length;i++){const w=r[i];if(/^\d/.test(w)&&r[i+1]&&!/^\d/.test(r[i+1])){out.push(w+" "+stem(r[i+1]));i++;}else if(w.length>=3&&!/^\d+$/.test(w))out.push(stem(w));}return out;}
 const stem=w=>w.length>5?w.replace(/(en|es|s|e)$/,""):w;
 function lev(a,b,lim){const m=a.length,n2=b.length;let prev=Array.from({length:n2+1},(_,j)=>j);
@@ -1261,7 +1264,7 @@ function wbRender(){
 function wbInit(){["#wbAfl","#wbStaal","#wbLabel","#wbRabo"].forEach(i=>$(i).onchange=wbRender);wbRender();}
 
 /* ---------- nieuwe versie: open pagina ververst zichzelf ---------- */
-const BUILDVER="6e1b2dec9781";
+const BUILDVER="687c069609a9";
 function verCheck(){if(BUILDVER.indexOf("__")===0)return;fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():"").then(v=>{v=(v||"").trim();if(v&&v!==BUILDVER&&/^[0-9a-f]{12}$/.test(v)){try{if(sessionStorage.getItem("acc_rl")===v)return;sessionStorage.setItem("acc_rl",v);}catch(e){return;}const q=$("#askQ")?$("#askQ").value:"";try{sessionStorage.setItem("acc_q",q);}catch(e){}location.replace(location.pathname+"?v="+v+location.hash);}}).catch(()=>{});}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")verCheck();});
 window.addEventListener("pageshow",e=>{if(e.persisted)verCheck();});
