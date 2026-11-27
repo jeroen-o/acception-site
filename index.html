@@ -702,7 +702,7 @@ async function accDec(pw,o){const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0
  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(o.i)},k,b(o.c)));}
 function accNorm(p){return (p||"").trim().toLowerCase().replace(/\s+/g," ");}
 
-const PWCHK={"s": "+nJVLiB9IzCx8Zpse/SCfw==", "i": "lg4RW276eDXe6ySB", "c": "qzzKe8mPCxU48OlmnjomLukB", "n": 150000};
+const PWCHK={"s": "Adwu7HADIECkQTL0yPB4sg==", "i": "3Gn8k29STMfAlq/i", "c": "enhH/RUxilWLNsUJGCfKahmQ", "n": 150000};
 let accOpen=false;try{accOpen=!!sessionStorage.getItem("acc_pw");}catch(e){}
 function accGate(cb){if(accOpen)return cb();const d=document.createElement("div");d.className="pwbg";
   d.innerHTML=`<form class="pwbox" autocomplete="off"><h3 style="margin:0 0 6px">Afgeschermd</h3><p class="meta" style="margin:0 0 10px">De voorwaarden per geldverstrekker zijn afgeschermd. Vul het wachtwoord in.</p><input type="password" class="q" placeholder="Wachtwoord" aria-label="Wachtwoord"><div class="pwe" style="color:#b00020;font-size:14px;min-height:1.2em;margin:6px 0"></div><button class="btn primary" type="submit">Openen</button> <button class="btn s" type="button" data-x>Annuleren</button></form>`;
@@ -1010,6 +1010,7 @@ const ROUTES=[
  {w:["leidraad","afm leidraad","leidraad hypotheekadvisering"],href:"/leidraad/",txt:"AFM Leidraad Hypotheekadvisering"},
  {w:["starter","starters","koopstart","eerste woning","eerste huis"],href:"/starters/",txt:"Starters: voorwaarden per geldverstrekker"},
  {w:["doorstromer","doorstromers","volgende woning"],href:"/doorstromers/",txt:"Doorstromers: voorwaarden per geldverstrekker"},
+ {w:["aflossingsvrij rabobank","rabobank aflossingsvrij","aflossingsvrije hypotheek rabobank","rabobank aflossingsvrije","aflossingsvrij rabo","rabo aflossingsvrij"],href:"/aflossingsvrij/rabobank/",txt:"Aflossingsvrij bij Rabobank (30% en € 150.000, einddatum)"},
  {w:["aflossingsvrij asn","asn aflossingsvrij","aflossingsvrije hypotheek asn","asn aflossingsvrije"],href:"/aflossingsvrij/asn/",txt:"Aflossingsvrij bij ASN Bank (30%, overgangsregeling 2030)"},
  {w:["verzilveren","verzilverhypotheek","zilverhuis","opeethypotheek","overwaarde opeten","woningverzilveraar","verzilverlening","svn","levensrente","overwaarde hypotheek"],href:"/verzilveren/",txt:"Verzilveren (overwaarde opeten) · ook: Woningverzilveraar.nl (NVHP)"},
  {w:["ondernemer","ondernemers","zzp","zzper","zzp er","dga","zelfstandige"],href:"/ondernemers/",txt:"Ondernemers / zzp: voorwaarden per geldverstrekker"},
@@ -1269,7 +1270,7 @@ function wbRender(){
 function wbInit(){["#wbAfl","#wbStaal","#wbLabel","#wbRabo"].forEach(i=>$(i).onchange=wbRender);wbRender();}
 
 /* ---------- nieuwe versie: open pagina ververst zichzelf ---------- */
-const BUILDVER="84439bd308c6";
+const BUILDVER="c38ecd28997a";
 function verCheck(){if(BUILDVER.indexOf("__")===0)return;fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():"").then(v=>{v=(v||"").trim();if(v&&v!==BUILDVER&&/^[0-9a-f]{12}$/.test(v)){try{if(sessionStorage.getItem("acc_rl")===v)return;sessionStorage.setItem("acc_rl",v);}catch(e){return;}const q=$("#askQ")?$("#askQ").value:"";try{sessionStorage.setItem("acc_q",q);}catch(e){}location.replace(location.pathname+"?v="+v+location.hash);}}).catch(()=>{});}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")verCheck();});
 window.addEventListener("pageshow",e=>{if(e.persisted)verCheck();});
