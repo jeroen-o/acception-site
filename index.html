@@ -702,7 +702,7 @@ async function accDec(pw,o){const b=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0
  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM",iv:b(o.i)},k,b(o.c)));}
 function accNorm(p){return (p||"").trim().toLowerCase().replace(/\s+/g," ");}
 
-const PWCHK={"s": "8v+9/7hLbUiUL+mPieEO8Q==", "i": "RZb09K2anbKodxoi", "c": "kWLsfNgArH9iAn8Dei9uv/2a", "n": 150000};
+const PWCHK={"s": "j28GrlRToVsdiB64iIw3sg==", "i": "L65CF1nlIpQOeJNW", "c": "ERJzr3q/LYsIZQJMMASoNUTA", "n": 150000};
 let accOpen=false;try{accOpen=!!sessionStorage.getItem("acc_pw");}catch(e){}
 function accGate(cb){if(accOpen)return cb();const d=document.createElement("div");d.className="pwbg";
   d.innerHTML=`<form class="pwbox" autocomplete="off"><h3 style="margin:0 0 6px">Afgeschermd</h3><p class="meta" style="margin:0 0 10px">De voorwaarden per geldverstrekker zijn afgeschermd. Vul het wachtwoord in.</p><input type="password" class="q" placeholder="Wachtwoord" aria-label="Wachtwoord"><div class="pwe" style="color:#b00020;font-size:14px;min-height:1.2em;margin:6px 0"></div><button class="btn primary" type="submit">Openen</button> <button class="btn s" type="button" data-x>Annuleren</button></form>`;
@@ -1037,7 +1037,8 @@ function ask(ev,opts){try{return askInner(ev,opts);}catch(err){const o=document.
   try{o.scrollIntoView({block:"start"});}catch(e){}}}
 function askInner(ev,opts){opts=opts||{};
   const q=$("#askQ").value.trim(); if(!q){$("#askOut").innerHTML="";return;}
-  const {lenders,crit,rest}=askParse(q); const rh=routeHTML(norm(q));
+  const {lenders,crit,rest}=askParse(q); let rh=routeHTML(norm(q));
+  if(crit.includes("aflossingsvrij_max")&&lenders.length===1&&L[lenders[0]]&&!L[lenders[0]].reference&&!rh.includes("/aflossingsvrij/"+lenders[0]+"/"))rh=`<div class="card hit"><b>Aflossingsvrij bij ${esc(L[lenders[0]].lender)}</b> <a href="/aflossingsvrij/${lenders[0]}/">Open de pagina →</a></div>`+rh;
   let h="";
   if(!crit.length&&!rh){
     h=`<div class="card hit noresult"><b>Helaas geen resultaat, zoek op een ander kenmerk.</b> <span class="meta">Mis je iets? <a href="mailto:jeroen.oversteegen@blinqx.tech?subject=${encodeURIComponent("Acception: dit mis ik")}&body=${encodeURIComponent("Zoekvraag: "+q+"\n\nWat mis je (onderwerp / geldverstrekker / bron)?\n")}">Geef het aan ons door</a>, dan voegen we het toe.</span> <span class="meta">Probeer bijvoorbeeld studieschuld, erfpacht, ZZP, BKR, overbrugging, woonboot of expats.</span><span class="meta" style="display:none"> studieschuld, erfpacht, ZZP, BKR, overbrugging, woonboot of expats.${lenders.length?" Herkende geldverstrekker(s): "+lenders.map(s=>esc(L[s].lender)).join(", ")+".":""}</span>${lenders.length===1?` <a href="#" data-open="${lenders[0]}">Bekijk alle voorwaarden van ${esc(L[lenders[0]].lender)}</a>`:""}${typeof CORPUS_B64!=="undefined"&&CORPUS_B64?` · <a href="#" data-ftsearch="1">Zoek in de volledige brontekst</a>`:""}</div>`;
@@ -1272,7 +1273,7 @@ function wbRender(){
 function wbInit(){["#wbAfl","#wbStaal","#wbLabel","#wbRabo"].forEach(i=>$(i).onchange=wbRender);wbRender();}
 
 /* ---------- nieuwe versie: open pagina ververst zichzelf ---------- */
-const BUILDVER="72040365af2f";
+const BUILDVER="25e1d09bad1d";
 function verCheck(){if(BUILDVER.indexOf("__")===0)return;fetch("/version.txt?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.text():"").then(v=>{v=(v||"").trim();if(v&&v!==BUILDVER&&/^[0-9a-f]{12}$/.test(v)){try{if(sessionStorage.getItem("acc_rl")===v)return;sessionStorage.setItem("acc_rl",v);}catch(e){return;}const q=$("#askQ")?$("#askQ").value:"";try{sessionStorage.setItem("acc_q",q);}catch(e){}location.replace(location.pathname+"?v="+v+location.hash);}}).catch(()=>{});}
 document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")verCheck();});
 window.addEventListener("pageshow",e=>{if(e.persisted)verCheck();});
